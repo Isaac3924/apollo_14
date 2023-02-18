@@ -2,7 +2,7 @@
 
 <% @astronauts.each do |astronaut| %>
   <div id= "<%= astronaut.id %>">
-    <p>Name: <%= astronaut.name %>, Age: <%= astronaut.age %>, Job: <%= astronaut.job %></p>
+    <p>Name: <%= astronaut.name %>, Age: <%= astronaut.age %>, Job: <%= astronaut.job %>, Total Time in Space: <%= astronaut.total_days_in_space %> days</p>
     <p>Missions:</p>
     <% astronaut.sort_missions_alphabetically.each do |mission| %>
       <%= mission.title %>

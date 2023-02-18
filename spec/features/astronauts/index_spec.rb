@@ -13,6 +13,8 @@ RSpec.describe 'Astronaut Index' do
 
     AstronautMission.create!(astronaut: @astronaut1, mission: @mission1)
     AstronautMission.create!(astronaut: @astronaut1, mission: @mission2)
+    AstronautMission.create!(astronaut: @astronaut2, mission: @mission2)
+    AstronautMission.create!(astronaut: @astronaut3, mission: @mission2)
     AstronautMission.create!(astronaut: @astronaut1, mission: @mission3)
     AstronautMission.create!(astronaut: @astronaut2, mission: @mission4)
   end
@@ -42,10 +44,8 @@ RSpec.describe 'Astronaut Index' do
   end
 
   describe 'User Story 3' do
-    it 'When I visit the Astronatus index page, I can see a list of the space missions'' for each astronaut' do
+    it 'When I visit the Astronauts index page, I can see a list of the space missions'' for each astronaut' do
       visit '/astronauts'
-      # require 'pry'; binding.pry
-      save_and_open_page
 
       within ("##{@astronaut1.id}") do
         expect(page).to have_content(@mission1.title)
@@ -62,6 +62,12 @@ RSpec.describe 'Astronaut Index' do
   end
 
   describe 'User Story 4' do
-
+    it 'When I visit the Astronauts index page, I can see the total time in space for each astronaut' do
+      visit '/astronauts'
+      save_and_open_page
+      expect(page).to have_content("Name: #{@astronaut1.name}, Age: #{@astronaut1.age}, Job: #{@astronaut1.job}, Total Time in Space: 13 days")
+      expect(page).to have_content("Name: #{@astronaut2.name}, Age: #{@astronaut2.age}, Job: #{@astronaut2.job}, Total Time in Space: 9 days")
+      expect(page).to have_content("Name: #{@astronaut3.name}, Age: #{@astronaut3.age}, Job: #{@astronaut3.job}, Total Time in Space: 2 days")
+    end
   end
 end

@@ -33,4 +33,16 @@ RSpec.describe Astronaut, type: :model do
 
     expect(@astronaut1.sort_missions_alphabetically).to eq([mission2, mission3, mission1])
   end
+
+  it '#sort_missions_alphabetically' do
+    mission1 = Mission.create!(title: "Gemini 7", time_in_space: 4)
+    mission2 = Mission.create!(title: "Apollo 13", time_in_space: 2)
+    mission3 = Mission.create!(title: "Capricorn 4", time_in_space: 7)
+
+    AstronautMission.create!(astronaut: @astronaut1, mission: mission1)
+    AstronautMission.create!(astronaut: @astronaut1, mission: mission2)
+    AstronautMission.create!(astronaut: @astronaut1, mission: mission3)
+
+    expect(@astronaut1.total_days_in_space).to eq(13)
+  end
 end
