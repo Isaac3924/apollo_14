@@ -1,5 +1,13 @@
 <h1>Astronaut Index</h1>
 
 <% @astronauts.each do |astronaut| %>
-  <p>Name: <%= astronaut.name %>, Age: <%= astronaut.age %>, Job: <%= astronaut.job %></p>
+  <div id= "<%= astronaut.id %>">
+    <p>Name: <%= astronaut.name %>, Age: <%= astronaut.age %>, Job: <%= astronaut.job %></p>
+    <p>Missions:</p>
+    <% astronaut.sort_missions_alphabetically.each do |mission| %>
+      <%= mission.title %>
+    <% end %>
+  </div>
 <% end %>
+
+<p>Average Age: <%= (Astronaut.avg_age).round %></p>

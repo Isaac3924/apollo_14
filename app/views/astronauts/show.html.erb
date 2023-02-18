@@ -1,0 +1,5 @@
+<h1><%= @astronaut.name %></h1>
+<p>Missions: </p>
+<% @astronaut.missions.each do |mission| %>
+  <%= "#{mission.title} | " %>
+<% end %>
